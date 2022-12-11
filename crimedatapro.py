@@ -33,7 +33,7 @@ import plotly.express as px
 # In[2]:
 
 
-data = pd.read_csv('littlecrime.csv')
+data = pd.read_csv('new_crimes.csv')
 st.write(data.head())
 
 
