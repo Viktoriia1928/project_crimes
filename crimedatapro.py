@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Data of crimes in Vancouver (Canada) from 2003 to 2017
+st.title('Data of crimes in Vancouver (Canada) from 2003 to 2017') 
 
-# ## Description of the dataset and size
+st.header('Description of the dataset and size') 
 
 # 
 st.markdown('''TYPE - Type of crime'
@@ -220,7 +220,7 @@ st.plotly_chart(fig)
 
 # 
 
-st.header("General conclusions:')
+st.header('General conclusions:')
 st.markdown('''The highest level of crime is noted:
 January, April, May, August, September 
 Central Business District, especially Howe street 
