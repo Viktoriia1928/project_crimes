@@ -27,7 +27,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sb
 import seaborn as sns
-get_ipython().system('pip install plotly')
 import plotly.express as px
 
 
