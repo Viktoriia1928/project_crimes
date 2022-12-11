@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+import streamlit as st
 st.title('Data of crimes in Vancouver (Canada) from 2003 to 2017') 
 
 st.header('Description of the dataset and size') 
