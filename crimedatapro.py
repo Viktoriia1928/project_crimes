@@ -6,18 +6,20 @@ st.title('Data of crimes in Vancouver (Canada) from 2003 to 2017')
 st.header('Description of the dataset and size') 
 
 # 
-st.markdown('''TYPE - Type of crime'
-YEAR - Year when the alleged criminal activity occurred
-MONTH - Month when the reported criminal activity occurred
-DAY - Date the alleged criminal activity occurred
-HOUR - Hour when the reported criminal activity occurred
-MINUTE - The minute the alleged crime occurred
-HUNDRED_BLOCK - Generalized place for reporting criminal activity
-NEIGHBOURHOOD - Area where the alleged criminal activity occurred
-X - Coordinate values projected into UTM Zone 10
-Y - Coordinate values projected into UTM Zone 10
-Latitude - Latitude coordinate values
+st.markdown('''TYPE - Type of crime\n
+YEAR - Year when the alleged criminal activity occurred\n
+MONTH - Month when the reported criminal activity occurred\n
+DAY - Date the alleged criminal activity occurred\n
+HOUR - Hour when the reported criminal activity occurred\n
+MINUTE - The minute the alleged crime occurred\n
+HUNDRED_BLOCK - Generalized place for reporting criminal activity\n
+NEIGHBOURHOOD - Area where the alleged criminal activity occurred\n
+X - Coordinate values projected into UTM Zone 10\n
+Y - Coordinate values projected into UTM Zone 10\n
+Latitude - Latitude coordinate values\n
 Longitude - Longitude coordinate values''')
+
+st.markdown('Import the necessary libraries')
 
 # In[1]:
 
@@ -49,11 +51,10 @@ data.dtypes
 st.write(('(Rows, Columns)', data.shape))
 
 
-st.header('Import the necessary libraries')
 
-st.subheader('Clearing the Dataset and adding columns')
+st.header('Clearing the Dataset and adding columns')
 
-st.header('Display the number of empty values') 
+st.markdown('Display the number of empty values')
 
 # In[5]:
 
@@ -61,7 +62,7 @@ st.header('Display the number of empty values')
 data.isnull().sum()
 
 
-st.header('Replace gaps with notes "unknown"') 
+st.markdown('Replace gaps with notes "unknown"')
 
 # In[6]:
 
@@ -71,7 +72,7 @@ data['MINUTE'].fillna("unknown", inplace=True)
 data['NEIGHBOURHOOD'].fillna("unknown", inplace=True)
 
 
-st.header("Create a bool column that tells us whether we know the exact time of the crime and a column with units to make it easier to build graphs and find the amount")
+st.markdown("Create a bool column that tells us whether we know the exact time of the crime and a column with units to make it easier to build graphs and find the amount")
 
 # In[7]:
 
@@ -101,7 +102,7 @@ data['Month_Word'] = data['MONTH'].apply(convert_month)
 data[:5]
 
 
-st.subheader('Working with data and numeric fields') 
+st.header('Working with data and numeric fields')
 
 # In[10]:
 
@@ -133,7 +134,7 @@ st.plotly_chart(fig)
 data['the_exact_time_is_known']
 
 
-st.header("The graph shows that in most of the crimes it was possible to determine the exact time") 
+st.markdown("The graph shows that in most of the crimes it was possible to determine the exact time")
 
 # 
 
@@ -147,7 +148,7 @@ fig.update_layout(xaxis_categoryorder = 'total descending')
 st.plotly_chart(fig)
 
 
-st.subheader("As we can see, the vast majority of crimes are thefts from parked cars, so the hypothesis is correct.") 
+st.markdown("As we can see, the vast majority of crimes are thefts from parked cars, so the hypothesis is correct.")
 
 st.subheader("Hypothesis: most crimes occur in crowded places")
 
@@ -159,7 +160,7 @@ fig.update_layout(xaxis_categoryorder = 'total ascending')
 st.plotly_chart(fig)
 
 
-st.header("The graph shows that the bulk of the crimes were committed in the Central Business District, which is largely due to mass gatherings of people who want to visit cafes, restaurants and the largest shopping center in the city, the hypothesis is confirmed") 
+st.markdown("The graph shows that the bulk of the crimes were committed in the Central Business District, which is largely due to mass gatherings of people who want to visit cafes, restaurants and the largest shopping center in the city, the hypothesis is confirmed")
 
 st.subheader("Hypothesis: The crime rate rises towards the summer as many people go on vacation and leave their homes and cars unattended, plus tourists come to the city")
 
@@ -176,8 +177,8 @@ fig = px.line(x=months.keys(), y=months.values(), title='Сorrelation between nu
 st.plotly_chart(fig)
 
 
-st.header("According to the plot, you can see that the high level of crime was in August, there were also surges in April - May")
-st.header("Using information from additional sources, the high level of crime in August can be explained by an accident in the power system of the United States and Canada. About 10 million Canadians (about a third of the population) were left without electricity. Splashes in April-May could be caused by the success of the local hockey team and mass celebrations. Also in February, Vancouver was nominated to host the Olympic Games, where it won in July.")
+st.markdown("According to the plot, you can see that the high level of crime was in August, there were also surges in April - May")
+st.markdown("Using information from additional sources, the high level of crime in August can be explained by an accident in the power system of the United States and Canada. About 10 million Canadians (about a third of the population) were left without electricity. Splashes in April-May could be caused by the success of the local hockey team and mass celebrations. Also in February, Vancouver was nominated to host the Olympic Games, where it won in July.")
 
 # In[16]:
 
@@ -190,9 +191,8 @@ for year in set(data['YEAR']):
         df = data[data['YEAR'] == year]
         a.append(len(df[df['TYPE'] == i]))
     sl2[year] = a
-sl2    
 
-
+st.subheader('Hypothesis: the overall number of crimes has been increasing from 2003 to 2017')
 # In[17]:
 
 
@@ -207,7 +207,7 @@ for i in types:
 st.plotly_chart(fig)
 
 
-st.subheader('The number of crimes increases by 2012, theft of vehicles remainds dominant') 
+st.markdown('The number of crimes has increased by 2012, theft of vehicles remained dominant')
 
 # In[18]:
 
